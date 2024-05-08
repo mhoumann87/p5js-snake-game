@@ -1,37 +1,37 @@
-// Variable for the snake, starting position and size
 let snake;
-let posX = 0;
-let posY = 0;
-const size = 10;
 
 function setup() {
-  // Create the canvas and put it in a div on the page
-  const canvas = createCanvas(600, 600);
-  canvas.parent('canvas');
+  createCanvas(600, 600);
 
-  // Create a new snake
-  snake = new Snake(posX, posY, size);
+  // Create a snake
+  snake = new Snake();
+
+  // Set the framerate for the canvas
+  frameRate(10); // TODO change this
 }
 
 function draw() {
-  background(51);
+  background(0);
 
-  // Use the keyPressed function to move the snake
   keyPressed();
   snake.update();
   snake.show();
 }
 
-// Use the arrow keys to change the direction of the snake
+// Function to move the snake based on the key pressed
 function keyPressed() {
-  // Use `keyCodes` to set direction
-  if (keyCode === UP_ARROW) {
-    snake.dir(0, -1);
-  } else if (keyCode === DOWN_ARROW) {
-    snake.dir(0, 1);
-  } else if (keyCode === RIGHT_ARROW) {
-    snake.dir(1, 0);
-  } else if (keyCode === LEFT_ARROW) {
-    snake.dir(-1, 0);
+  switch (keyCode) {
+    case UP_ARROW:
+      snake.dir(0, -1);
+      break;
+    case DOWN_ARROW:
+      snake.dir(0, 1);
+      break;
+    case RIGHT_ARROW:
+      snake.dir(1, 0);
+      break;
+    case LEFT_ARROW:
+      snake.dir(-1, 0);
+      break;
   }
 }
